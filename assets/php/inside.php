@@ -7,7 +7,7 @@ $insideArquivos = $dataArray['arquivos']();//todos os arquivos dentro de cada pa
 getArquivos();
 ?>
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
 <title>Estoque de vetores</title>
@@ -25,10 +25,7 @@ getArquivos();
 <div id="insideContainer"> 
 	<div id='insideHeader'> 
 		<div id="insideNome">
-			<div class='voltar'>
-				<a href='../../' onclick="window.history.back()"><img src="../../../_elementos/BTN_voltar-01.png"></a><!--BTN_voltar-01.svg -->
-			</div>
-			<form id="conteudoNome" action='../../../assets/php/processName.php' method='post'>
+ 			<form id="conteudoNome" action='../../../assets/php/processName.php' method='post'>
 				<textarea id="nomeAparente" name="nome"><?php echo getValues('nome')?></textarea>
 				<input class="submit" id="nomeInput" type='submit' value='Salvar Nome'>
 				<input type='hidden' name='directory' value=<?php echo $directory;?>>

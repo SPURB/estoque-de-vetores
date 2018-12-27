@@ -1,8 +1,10 @@
-[
+var nomePagina = "Infográficos";
+var base = [
     {
         "description": "30",
         "files": [
-            "thumb.png"
+            "thumb.png",
+            "AMBIENTAL_alcas-alagaveis.ai"
         ],
         "folder": "1",
         "full": {
@@ -20,7 +22,8 @@
     {
         "description": "Atribua uma descrição",
         "files": [
-            "thumb.png"
+            "thumb.png",
+            "AMBIENTAL_alcas-arborizadas.ai"
         ],
         "folder": "2",
         "full": {
@@ -51,60 +54,6 @@
             "height": 1250,
             "name": "thumb.png",
             "width": 775
-        }
-    },
-    {
-        "description": "qweqwe",
-        "files": [
-            "thumb.png"
-        ],
-        "folder": "OUCBT_Parametros-Qualificadores_Interligacao-de-vias",
-        "full": {
-            "height": false,
-            "name": false,
-            "width": false
-        },
-        "name": "3",
-        "thumb": {
-            "height": 441,
-            "name": "thumb.png",
-            "width": 329
-        }
-    },
-    {
-        "description": "qwe",
-        "files": [
-            "thumb.png"
-        ],
-        "folder": "OUCBT_Parametros-Qualificadores_Taxa-de-Permeabilidade",
-        "full": {
-            "height": false,
-            "name": false,
-            "width": false
-        },
-        "name": "2",
-        "thumb": {
-            "height": 453,
-            "name": "thumb.png",
-            "width": 348
-        }
-    },
-    {
-        "description": "qweqweqwewqe",
-        "files": [
-            "thumb.png"
-        ],
-        "folder": "OUCBT_Parametros-Qualificadores_Uso-Misto",
-        "full": {
-            "height": false,
-            "name": false,
-            "width": false
-        },
-        "name": "5",
-        "thumb": {
-            "height": 382,
-            "name": "thumb.png",
-            "width": 333
         }
     }
 ]
