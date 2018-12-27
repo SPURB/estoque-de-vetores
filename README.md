@@ -1,5 +1,5 @@
 # estoque-de-vetores
-Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria de Desenvolvimento Urbano) e São Paulo Urbanismo (SPURB).
+Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria de Desenvolvimento Urbano e Licenciamento) e São Paulo Urbanismo (SPURB).
 
 O Estoque de Vetores é dividido em: Pictogramas, Infográficos e Blocos (com bases axonométricas, cortes, ilustrações e blocos para ilustrações)
 Cada imagem está associada a um nome.txt e uma descricao.txt. Estes dados são atualizados via browser para os usuários da nossa intranet.

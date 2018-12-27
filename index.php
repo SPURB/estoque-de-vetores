@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="assets/css/base.css">
+<link rel="stylesheet" type="text/css" href="./assets/css/base.css">
 
 <!--[if IE]>
 <link rel="stylesheet" type="text/css" href="assets/css/ie.css"> 
@@ -13,9 +13,9 @@
 
 <body>
 
-<div id="page_loader">
+<!-- <div id="page_loader">
 	<img src="_elementos/loading.gif">
-</div>
+</div> -->
 
 <div id='rootContainer'>
 	<div id='indexHeader'>
@@ -34,15 +34,15 @@
 
 <div class='rootAction'>
 	<div class='rootSecoes'>
-		<a href="./pictogramas" onclick="gifLoader()"><img src="_elementos/home_pictogramas.png"></a>
+		<a href="./pictogramas/imagens" onclick="gifLoader()"><img src="_elementos/home_pictogramas.png"></a>
 		<p>Pictogramas</p>
 	</div>
 	<div class='rootSecoes'>
-		<a href="./infograficos" onclick="gifLoader()"><img src="_elementos/home_infograficos.png"></a>
+		<a href="./infograficos/imagens" onclick="gifLoader()"><img src="_elementos/home_infograficos.png"></a>
 		<p>Infográficos</p>
 	</div>
 	<div class="rootSecoes">
-		<a href="./blocos" onclick="gifLoader()"><img src="_elementos/home_blocos.png"></a>
+		<a href="./blocos/imagens" onclick="gifLoader()"><img src="_elementos/home_blocos.png"></a>
 		<p>Blocos</p>
 		</div>
 </div>
@@ -51,7 +51,7 @@
 <div class='rootInstructions'>
 	<img src="_elementos/home_mn_secoes.png">
 	<div>
-		<p>O Estoque de Vetores é dividido em: <a href="./pictogramas">Pictogramas</a>, <a href="./infograficos">Infográficos</a> e <a href="./blocos">Blocos</a> (com bases axonométricas, cortes, ilustrações e blocos para ilustrações)
+		<p>O Estoque de Vetores é dividido em: <a href="./pictogramas">Pictogramas</a>, <a href="./infograficos">Infográficos</a> e <a href="./blocos/imagens/index.html">Blocos</a> (com bases axonométricas, cortes, ilustrações e blocos para ilustrações)
 		</p>
 	</div>
 </div>
@@ -98,16 +98,16 @@
 
 <div class='rootAction' style='margin-top:60px'>
 	<div class='rootSecoes'>
-		<a href="./pictogramas" onclick="gifLoader()"><img src="_elementos/home_pictogramas.png"></a>
+		<a href="./pictogramas/imagens" onclick="gifLoader()"><img src="_elementos/home_pictogramas.png"></a>
 		<p>Pictogramas</p>
 	</div>
 
 	<div class='rootSecoes'>
-		<a href="./infograficos"onclick="gifLoader()"><img src="_elementos/home_infograficos.png"></a>
+		<a href="./infograficos/imagens"onclick="gifLoader()"><img src="_elementos/home_infograficos.png"></a>
 		<p>Infográficos</p>
 	</div>
 	<div class="rootSecoes"> 
-		<a href="./blocos" onclick="gifLoader()"><img src="_elementos/home_blocos.png"></a>
+		<a href="./blocos/imagens" onclick="gifLoader()"><img src="_elementos/home_blocos.png"></a>
 		<p>Blocos</p>
 		</div>
 </div>
