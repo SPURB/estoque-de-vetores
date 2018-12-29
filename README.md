@@ -1,17 +1,19 @@
 # estoque-de-vetores
-Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria de Desenvolvimento Urbano e Licenciamento) e São Paulo Urbanismo (São Paulo Urbasnimo).
+Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria de Desenvolvimento Urbano e Licenciamento) e São Paulo Urbanismo (São Paulo Urbanismo).
 
-O Estoque de Vetores é dividido em: Pictogramas, Infográficos e Blocos (com bases axonométricas, cortes, ilustrações e blocos para ilustrações).
+O Estoque de Vetores é dividido em: Pictogramas, Infográficos e Blocos.
 
 ### Pré-requisitos
-* Servidor com PHP instalado
+* PHP
 * Python 3 
 
+### Setup do ambiente
+Basta incluir os arquivos deste repositório em um servidor com PHP e Python 3 instalados
 
-### Inclusão de novas imagens
-Criar um diretório dentro de cada seção. Dentro deste diretório incuir todos os arquivos editáveis. As extensões previstas são: 
-`jpg`,`png`,`gif`,`pdf`,`svg`,`eps`,`ai,`,`psd`,`skp`,`dwg` e `dxf`. É importante criar um thumb para gerar a visualização. Para isto criar uma imagem de nome `thumb` ou terminada em `_th`. Exemplo: 
+### Arquivos
+Incluir um diretório com o nome do conjunto de arquivos na seção adequada
 ```
+/assets
 /blocos
 /infograficos
 /pictogramas
@@ -23,21 +25,28 @@ Criar um diretório dentro de cada seção. Dentro deste diretório incuir todos
 		Indústria_th.png
 		Indústria_full.png
 ```
-Arquivos terminados em `th` ou de nome `thumb` é a thumbnail.  
-> Thumbnails funcionam melhor com `150x150px` para os pictogramas e 500x500 para os blocos e infográficos.
+##### Thumbs
+![ícone de Indústria](https://raw.githubusercontent.com/SPURB/estoque-de-vetores/master/pictogramas/Ind%C3%BAstria/Ind%C3%BAstria_th.png)  
+É importante criar um thumb para gerar a pré-visualização na página de cada seção.  
+Para fazer isto crie uma imagem com o nome `thumb` ou terminada em `_th` dentro do diretório. No exemplo acima: `Indústria_th.png`.
 
-Arquivos terminados em `full` é opcional, mas caso tenha o arquivo de prévisualização grande. 
 
-### Setup do ambiente
-Basta incluir os arquivos deste repositório em pasta no servidor e abrir local da path (exemplo: http://localhost/estoque-de-vetores).
+Arquivos terminados em `th` ou de nome `thumb` será a thumbnail do diretório.  
+> Thumbnails funcionam melhor com `150x150px` para os pictogramas e `500x500px` para os blocos e infográficos.
 
-Após incluir a nova imagem fazer o update das bases pelo terminal. `cd estoque-de-vetores`
+##### Full
+Arquivos terminados em `full` são opcionais.  Caso imagens do tipo não existam o primeiro png,jpg ou gif do diretório gerará esta pré-visualização. No exemplo acima o arquivo é `Indústria_full.png`
+
+### Para incluir novas imagens
+Criar um diretório dentro da seção adequada com os arquivos da imagem. As extensões previstas são: 
+`jpg`, `png`, `gif`, `pdf`, `svg`, `eps`, `ai`, `psd`, `skp`, `dwg` e `dxf`.  
+
+#### Instruções
+
+1. Criar o diretório com todos os arquivo dentro do diretório da seção 
+2. Gerar a atualização rodando `update.py` na raiz do projeto: 
 
 ```
+cd estoque-de-vetores
 py update.py
-
 ```
-
-
-### Licença
-O conteúdo deste repositório está sob a licença [GNU General Public License](https://www.gnu.org/licenses/licenses.html#GPL).

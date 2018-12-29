@@ -39,7 +39,7 @@ var headercabecalho = Vue.component('headercabecalho',{
 			<p>{{vetorNome}}</p>
 			<a href="../pictogramas">
 			<img 
-				src="../_elementos/BTN_01.svg" 
+				src="../assets/img/BTN_01.svg" 
 				class="tipoVetor" 
 				alt="Pictogramas" 
 				:class="ativo('Pictogramas')"
@@ -48,7 +48,7 @@ var headercabecalho = Vue.component('headercabecalho',{
 			</a>
 			<a href="../infograficos">
 			<img 
-				src="../_elementos/BTN_02.svg" 
+				src="../assets/img/BTN_02.svg" 
 				class="tipoVetor" 
 				:class="ativo('Infográficos')"
 				alt="Infográficos" 
@@ -57,7 +57,7 @@ var headercabecalho = Vue.component('headercabecalho',{
 			</a>
 			<a href="../blocos">
 			<img 
-				src="../_elementos/BTN_03.svg" 
+				src="../assets/img/BTN_03.svg" 
 				class="tipoVetor" 
 				alt="Blocos" 
 				:class="ativo('Blocos')"

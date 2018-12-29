@@ -69,7 +69,7 @@ img:hover {
 	padding-left: 3em;
 	background-position: left;
 	background-repeat: no-repeat;
-	background-image: url(../../_elementos/buscar.svg);
+	background-image: url(../../assets/img/buscar.svg);
 	background-size: 2.8em;
 }
 #icones {
