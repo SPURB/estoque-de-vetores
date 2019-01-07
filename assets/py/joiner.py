@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import os, struct, imghdr, json
+from .folder_name import folder_name
+from .valid_extensions import valid_extensions
 
 def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#20380514
 		'''Determine the image type of fhandle and return its size. from draco'''
@@ -35,13 +37,6 @@ def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#203805
 						return
 				return width, height
 
-def folder_name(imagem):
-	sections = [ 'blocos', 'pictogramas', 'infograficos' ]
-	for section in sections:
-		if imagem.find(section) is not -1: 
-			folder_name = imagem.replace('./', '').replace(section, '').replace('/','')
-			return folder_name
-
 def create_base(local):
 	encoding='UTF8'
 	have_full_img = False
@@ -51,22 +46,9 @@ def create_base(local):
 	nome_pagina = "'" + local.replace('./','')+ "'"
 	nome_pagina = nome_pagina.title()
 
-
 	for imagem in index_paths:
 		if os.path.isdir(imagem):
 			path_list = os.listdir(imagem)
-			valid_extensions = [
-			'.jpg',
-			'.png',
-			'.gif',
-			'.pdf',
-			'.svg',
-			'.eps',
-			'.ai',
-			'.psd',
-			'.skp',
-			'.dwg',
-			'.dxf']
 
 			valid_files = []
 
@@ -119,4 +101,4 @@ def create_base(local):
 	base.write(output)
 	base.close()
 
-	print('base_teste.js atualizado em ' + local)
+	print('base.js atualizado em ' + local)

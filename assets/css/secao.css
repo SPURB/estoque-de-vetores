@@ -29,7 +29,7 @@ p, h4, a{
 .conjunto img{
 	max-width: 20em;
 	opacity: 0.4;
-	transition: opacity 1s ease-out;
+	transition: opacity .25s ease-out;
 
 }
 img:hover {
@@ -92,7 +92,7 @@ img:hover {
 #icones img{
 	opacity: 0.4;
 	color: #FFF;
-	transition: opacity 1.2s ease-in-out ;
+	transition: opacity .25s ease-in-out ;
 }
 h4 {
 	text-transform: lowercase;

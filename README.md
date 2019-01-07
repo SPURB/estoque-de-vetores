@@ -5,7 +5,7 @@ O Estoque de Vetores é dividido em: Pictogramas, Infográficos e Blocos.
 
 ### Pré-requisitos
 * PHP
-* Python 3 
+* Python 3
 
 ### Setup do ambiente
 Basta incluir os arquivos deste repositório em um servidor com PHP e Python 3 instalados
@@ -39,7 +39,7 @@ Arquivos terminados em `full` são opcionais.  Caso imagens do tipo não existam
 
 ### Para incluir novas imagens
 Criar um diretório dentro da seção adequada com os arquivos da imagem. As extensões previstas são: 
-`jpg`, `png`, `gif`, `pdf`, `svg`, `eps`, `ai`, `psd`, `skp`, `dwg` e `dxf`.  
+`jpg`, `png`, `gif`, `pdf`, `svg`, `eps`, `ai`, `psd`, `skp`, `dwg` e `dxf`. (ver `assets/py/valid_extensions.py`)
 
 #### Instruções
 
@@ -47,6 +47,13 @@ Criar um diretório dentro da seção adequada com os arquivos da imagem. As ext
 2. Gerar a atualização rodando `update.py` na raiz do projeto: 
 
 ```
-cd estoque-de-vetores
-py update.py
+python3 update.py nome-da-secao
 ```
+`update.py` requer um argumento que pode um dos nomes da seção ou `all` para atualizar todas as seções.
+
+
+3. Para limpar os diretórios, manter apenas os arquivos válidos 
+```
+python3 clean.py nome-da-secao
+```
+Assim como `update.py`, `clean.py` requer um argumento que pode um dos nomes da seção ou `all` para limpar todas as seções.
