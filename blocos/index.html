@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<title>Estoque de vetores | Blocos</title>
+	<link rel="stylesheet" type="text/css" href="../assets/css/secao.css">
+	<script defer src="../assets/js/vue.min.js"></script>
+	<script defer src="base.js"></script>
+	<script defer src="../assets/js/main.js"></script>
+</head>
+<body>
+	<div id="app">
+		<headercabecalho v-on:updatepesquisa="input($event)"></headercabecalho>
+		<grid :pesquisa="pesquisa"></grid>
+	</div>
+</body>
+</html>

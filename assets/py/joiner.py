@@ -81,16 +81,16 @@ def create_base(local):
 			json_list.append({
 				"folder": folder_name(imagem),
 				"thumb":{
-					"name":thumb,
-					"height":thumb_height,
-					"width":thumb_width
+					"name": thumb,
+					"height": thumb_height,
+					"width": thumb_width
 					},
 				"full":{
-					"name":full,
-					"height":full_height,
-					"width":full_width
+					"name": full,
+					"height": full_height,
+					"width": full_width
 					},
-					"files":valid_files
+					"files": valid_files
 			})
 
 

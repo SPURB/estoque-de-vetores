@@ -3,9 +3,9 @@ blocos/**/*
 infograficos/**/*
 pictogramas/**/*
 
-!blocos/index.php
-!infograficos/index.php
-!pictogramas/index.php
+!blocos/index.html
+!infograficos/index.html
+!pictogramas/index.html
 
 # Non minidfied assets (for development)
 vue.js

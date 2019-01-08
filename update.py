@@ -10,4 +10,3 @@ if __name__ == "__main__":
         
     else:
         joiner.create_base('./' + folder + '/')
-
