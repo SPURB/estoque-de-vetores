@@ -1,5 +1,7 @@
 #!/usr/bin/python
 import os, struct, imghdr, json
+from .folder_name import folder_name
+from .valid_extensions import valid_extensions
 
 def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#20380514
 		'''Determine the image type of fhandle and return its size. from draco'''
@@ -35,13 +37,6 @@ def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#203805
 						return
 				return width, height
 
-def folder_name(imagem):
-	sections = [ 'blocos', 'pictogramas', 'infograficos' ]
-	for section in sections:
-		if imagem.find(section) is not -1: 
-			folder_name = imagem.replace('./', '').replace(section, '').replace('/','')
-			return folder_name
-
 def create_base(local):
 	encoding='UTF8'
 	have_full_img = False
@@ -51,34 +46,21 @@ def create_base(local):
 	nome_pagina = "'" + local.replace('./','')+ "'"
 	nome_pagina = nome_pagina.title()
 
-
 	for imagem in index_paths:
 		if os.path.isdir(imagem):
 			path_list = os.listdir(imagem)
-			valid_extensions = [
-			'.jpg',
-			'.png',
-			'.gif',
-			'.pdf',
-			'.svg',
-			'.eps',
-			'.ai',
-			'.psd',
-			'.skp',
-			'.dwg',
-			'.dxf']
 
 			valid_files = []
 
 			for file_item in path_list:
 				file_name, file_extension = os.path.splitext(file_item)
 
-				if file_name.lower().endswith('th') or file_name.lower().endswith('thumb'):
+				if file_name.lower().endswith('_th') or file_name.lower().endswith('thumb'):
 					thumb = file_item
 					thumb_height = get_image_size(imagem+'/'+file_item)[0]
 					thumb_width = get_image_size(imagem+'/'+file_item)[1]
 
-				elif file_name.lower().endswith('fl') or file_name.lower().endswith('full'):
+				elif file_name.lower().endswith('_fl') or file_name.lower().endswith('full'):
 					full = file_item
 					full_height = get_image_size(imagem+'/'+file_item)[0]
 					full_width = get_image_size(imagem+'/'+file_item)[1]
@@ -86,9 +68,9 @@ def create_base(local):
 
 				for valid in valid_extensions:
 					if file_extension == valid:
-						if file_name.lower().endswith('th')==False and file_name.lower().endswith('thumb')==False:
+						if file_name.lower().endswith('_th') == False and file_name.lower().endswith('thumb') == False:
 							valid_files.append(file_item)
-						elif have_full_img==False:
+						elif have_full_img == False:
 							valid_files.append(file_item)
 
 			if have_full_img == False:
@@ -99,16 +81,16 @@ def create_base(local):
 			json_list.append({
 				"folder": folder_name(imagem),
 				"thumb":{
-					"name":thumb,
-					"height":thumb_height,
-					"width":thumb_width
+					"name": thumb,
+					"height": thumb_height,
+					"width": thumb_width
 					},
 				"full":{
-					"name":full,
-					"height":full_height,
-					"width":full_width
+					"name": full,
+					"height": full_height,
+					"width": full_width
 					},
-					"files":valid_files
+					"files": valid_files
 			})
 
 
@@ -119,4 +101,4 @@ def create_base(local):
 	base.write(output)
 	base.close()
 
-	print('base_teste.js atualizado em ' + local)
+	print('base.js atualizado em ' + local)
