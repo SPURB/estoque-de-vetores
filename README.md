@@ -4,19 +4,20 @@ Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria 
 O Estoque de Vetores é dividido em: Pictogramas, Blocos e Infográficos.
 
 ### Pré-requisitos
-* Python 3 (instalado e configurada na PATH) e pip
+* Python 3 e pip (e configueradas na PATH)
 
 ### Setup do ambiente
-Incluir os arquivos deste repositório em um servidor http
+1. Incluir os arquivos deste repositório em um servidor 
 
-1. Instalar watchdog:
+2.  Instalar watchdog :
 ```
 pip install watchdog
 ```
-2. Observar alterações nos diretórios `/pictogramas`, `/blocos` e `/infograficos`
+3. Pelo cmd do windows 
 ```
-python3 watch.py
+run-tasks
 ```
+> Caso o ambiente não seja windows pode-se rodar diretamente os arquivos python `watch.py`, `update.py` ou `clean.py`. O comando acima apenas executa estes programas periodicamente. 
 
 ### Arquivos
 Incluir diretórios em cada seção no seguinte padrão:
@@ -34,28 +35,16 @@ Incluir diretórios em cada seção no seguinte padrão:
 		Indústria_full.png
 ```
 ##### Sempre incluir thumbnails
-![ícone de Indústria](https://raw.githubusercontent.com/SPURB/estoque-de-vetores/master/pictogramas/Ind%C3%BAstria/Ind%C3%BAstria_th.png)
-É importante criar um thumb para gerar a pré-visualização. 
+Criar um thumb para gerar a pré-visualização
 
-Para fazer isto crie uma imagem com o nome `thumb` ou terminada em `_th` dentro do diretório. No exemplo acima: `Indústria_th.png`.
+Para isto crie uma imagem com o nome `thumb` ou terminada em `_th` dentro do diretório. No exemplo acima: `Indústria_th.png`.
 
 
 > Thumbnails funcionam melhor com `150x150px` para os pictogramas e `500x500px` para os blocos e infográficos.
 
 ##### Full
-Arquivos terminados em `full` são opcionais.  Caso imagens do tipo não existam o primeiro png, jpg ou gif do diretório gerará esta pré-visualização. No exemplo acima o arquivo é `Indústria_full.png`
+Arquivos terminados em `_full` ou `_fl` são opcionais.  Caso imagens do tipo não existam o primeiro png, jpg ou gif do diretório gerará esta pré-visualização. No exemplo acima o arquivo é `Indústria_full.png`
 
 #### Limpeza
 Pode ser necessário limpar os diretórios para manter apenas os arquivos necessários para a renderização das páginas. As extensões previstas são: 
 `jpg`, `png`, `gif`, `pdf`, `svg`, `eps`, `ai`, `psd`, `skp`, `dwg` e `dxf`. (ver `assets/py/valid_extensions.py`)
-
-Para limpar as pastas e manter apenas arquivos com estas extensões executar o comando: 
-
-1. Para limpeza em seção específica:
-```
-python3 clean.py nome-da-secao
-```
-2. Limpar os três diretórios: 
-```
-python3 clean.py all
-```
