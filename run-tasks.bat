@@ -1,6 +1,5 @@
 @echo off
 
-start watch
 set /a days=0
 
 :while_a_day
