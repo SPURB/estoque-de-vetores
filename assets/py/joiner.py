@@ -60,7 +60,7 @@ def create_base(local):
 					thumb_height = get_image_size(imagem+'/'+file_item)[0]
 					thumb_width = get_image_size(imagem+'/'+file_item)[1]
 
-				elif file_name.lower().endswith('_fl') or file_name.lower().endswith('full'):
+				elif file_name.lower().endswith('_fl') or file_name.lower().endswith('_full'):
 					full = file_item
 					full_height = get_image_size(imagem+'/'+file_item)[0]
 					full_width = get_image_size(imagem+'/'+file_item)[1]
@@ -68,7 +68,7 @@ def create_base(local):
 
 				for valid in valid_extensions:
 					if file_extension == valid:
-						if file_name.lower().endswith('_th') == False and file_name.lower().endswith('thumb') == False:
+						if file_name.lower().endswith('_th') == False and file_name.lower().endswith('_thumb') == False:
 							valid_files.append(file_item)
 						elif have_full_img == False:
 							valid_files.append(file_item)

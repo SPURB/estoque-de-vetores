@@ -1,25 +1,29 @@
 <template>
 	<div id="app">
-		<div id="nav" v-if="!isHome">
-			<router-link to="/pictogramas">Pictogramas</router-link> |
-			<router-link to="/blocos">Blocos</router-link> |
-			<router-link to="/infograficos">Infograficos</router-link>
-		</div>
+		<headerCabecalho v-if="!isHome"></headerCabecalho>
 		<router-view/>
 	</div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+import headerCabecalho from '@/components/headerCabecalho'
+
 export default {
 	name: 'app',
+	components: { headerCabecalho },
 	computed: {
 		isHome () {
 			if (this.$route.name === 'home') return true
 			else return false
-		}
+		},
+		...mapState([
+			'validSections'
+		])
 	},
-	mounted () {
-		this.$store.dispatch('fetchHome')
+	created () {
+		this.$store.dispatch('getValidSections')
+		this.$store.dispatch('getHome')
 	}
 }
 </script>
