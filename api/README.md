@@ -3,22 +3,28 @@
 * pip
 
 ## Setup 
-```
-# instale virtualenv 
-pip install virtualenv
+1. Instale virtualenv 
 
-# crie o ambiente `env` e ative-o
-virtualenv env
-env/Scripts/activate # windows. terminal -> source env/bin/activate
+    ```
+    pip install virtualenv
+    ```
 
-# instale as dependências
-pip install -r requirements.txt
+2. crie o ambiente `env` e ative-o
+    ``` 
+    virtualenv env
+    env/Scripts/activate # comando para windows. no terminal -> $ source env/bin/activate
+    ``` 
 
-# Altere host.txt incluindo a url do servidor
-```
+3. Instale as dependências deste projeto
+    ```
+    pip install -r requirements.txt
+    ```
+
+4. Renomeie `host-sample.txt` para `host.txt`. 
+
 
 ## Inicie o servidor 
 ```
 python app.py
 ```
-> atalho para windows (`r` + enter)
+> O servidor em `http://127.0.0.1:5000`

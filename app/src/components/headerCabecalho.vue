@@ -1,8 +1,8 @@
 <template>
 	<div class="headerCabecalho">
 		<div id="icones">
-			<a href="/">voltar </a>
-				<router-link  v-for="(section, index) in home" :to="section.url" :key="index"> {{section.name}} </router-link>
+			<router-link to="/">Voltar</router-link>
+			<router-link  v-for="(section, index) in home" :to="section.name" :key="index"> {{section.name}}</router-link>
 		</div>
 	</div>
 </template>

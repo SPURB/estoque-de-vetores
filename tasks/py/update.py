@@ -3,6 +3,8 @@ import os, struct, imghdr, json
 from .folder_name import folder_name
 from .valid_extensions import valid_extensions
 
+encoding='UTF8'
+
 def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#20380514
 		'''Determine the image type of fhandle and return its size. from draco'''
 		with open(fname, 'rb') as fhandle:
@@ -38,15 +40,15 @@ def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#203805
 				return width, height
 
 def create_base(local):
-	encoding='UTF8'
 	have_full_img = False
 	json_list = []
 	items = os.listdir(local)
-	index_paths = list(map(lambda item: local + item, items))
-	nome_pagina = "'" + local.replace('./','')+ "'"
+	index_paths = list(map(lambda item: local + '/' + item, items))
+	nome_pagina = "'" + local.replace('./public/','')+ "'"
 	nome_pagina = nome_pagina.title()
 
 	for imagem in index_paths:
+		# print(imagem)
 		if os.path.isdir(imagem):
 			path_list = os.listdir(imagem)
 
@@ -68,7 +70,7 @@ def create_base(local):
 
 				for valid in valid_extensions:
 					if file_extension == valid:
-						if file_name.lower().endswith('_th') == False and file_name.lower().endswith('_thumb') == False:
+						if file_name.lower().endswith('_th') == False and file_name.lower().endswith('thumb') == False:
 							valid_files.append(file_item)
 						elif have_full_img == False:
 							valid_files.append(file_item)
@@ -77,14 +79,14 @@ def create_base(local):
 				full = False
 				full_height = False
 				full_width = False
-
+				
 			json_list.append({
 				"folder": folder_name(imagem),
 				"thumb":{
 					"name": thumb,
 					"height": thumb_height,
 					"width": thumb_width
-					},
+				},
 				"full":{
 					"name": full,
 					"height": full_height,
@@ -92,13 +94,55 @@ def create_base(local):
 					},
 					"files": valid_files
 			})
-
-
-	base = open(local + 'base.js','w', encoding=encoding)
-	# json_output = json.dumps(json_list, indent = 4 , sort_keys=True , ensure_ascii = False) # identado
-	json_output = json.dumps(json_list, sort_keys=True , ensure_ascii = False) 
-	output ="var nomePagina = " + nome_pagina.replace('/','') +  ";var base = " + json_output
-	base.write(output)
+	
+	file_name = nome_pagina.replace("'", '').lower()
+	file_path = './public/_data/' + file_name +'.json'
+	base = open(file_path,'w', encoding=encoding)
+	json_output = json.dumps(json_list, indent = 4 , sort_keys=True , ensure_ascii = False) # identado
+	# json_output = json.dumps(json_list, sort_keys=True , ensure_ascii = False) 
+	base.write(json_output)
 	base.close()
 
-	print('base.js atualizado em ' + local)
+	print(file_name + ' atualizado em ' + file_path)
+
+def create_bases(directories_list):
+	for directory in directories_list:
+		create_base('./public/' + directory)
+
+def sections(base_folder):
+	valid_dirs = os.listdir(base_folder)
+	valid_dirs.remove('_data')
+
+	section_data = []
+
+	for section in valid_dirs:
+		home_images = base_folder + section
+		files = os.listdir(home_images)
+		section_images = list(filter(lambda file: file.lower().endswith(('.png', '.jpg', '.gif')), files))
+
+		section_images_obj = []
+
+		for image in section_images:
+
+			path = base_folder + section + '/' + image
+			width = get_image_size(path)[0]
+			height = get_image_size(path)[1]
+
+			section_images_obj.append({
+				'filename': image,
+				'width': width,
+				'height': height
+			})
+
+		section_data.append({
+			'name': section,
+			'images': section_images_obj
+		})
+
+	file_path = './public/_data/sections.json'
+	base = open(file_path, 'w', encoding=encoding)
+	# json_output = json.dumps(section_data, indent = 4 , sort_keys=True , ensure_ascii = False) # identado
+	json_output = json.dumps(section_data, sort_keys=True , ensure_ascii = False) 
+	base.write(json_output)
+	base.close()
+	print('secoes atualizadas em ' + file_path)

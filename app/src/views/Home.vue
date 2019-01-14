@@ -5,8 +5,8 @@
 				<ul id="secoes">
 					<li v-for="(route, index) in home"
 						:key="index"><router-link
-						:to="route.url"><img
-						:data-src="route.thumb"
+						:to="route.name"><img
+						:src="concatImagePath(route.name, route.images[0].filename)"
 						:alt="alt(route.name)"><h2>{{ route.name }}</h2></router-link></li>
 				</ul>
 		</main>
@@ -20,12 +20,14 @@ export default {
 	computed: {
 		...mapState([
 			'home',
-			'fetching'
+			'fetching',
+			'imagesHostBaseUrl'
 		])
 	},
 	created () { this.$store.dispatch('getHome') },
 	methods: {
-		alt (name) { return 'Image of "' + name + '" section' }
+		alt (name) { return 'Image of "' + name + '" section' },
+		concatImagePath (folder, file) { return this.imagesHostBaseUrl + folder + '/' + file }
 	}
 }
 </script>

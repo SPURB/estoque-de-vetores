@@ -1,9 +1,9 @@
 '''
 secions.list
 return a list with sections
-'''
+ '''
 # from modules import sections
-# print(sections.list)
+# print(sections.names())
 
 '''
 readdata.read(name)

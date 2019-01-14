@@ -9,7 +9,7 @@ cors = CORS(app)
 app.config['JSON_AS_ASCII'] = False
 
 # list of "sections" endponints
-sectionsUrls = list(map(lambda item: 'http://' + host +':' + str(port) + '/' + item, sections.list))
+sectionsUrls = list(map(lambda item: 'http://' + host +':' + str(port) + '/' + item, sections.names()))
 
 @app.route('/')
 def home():
@@ -22,13 +22,13 @@ def home():
 def valid_sections():
     return jsonify({
         '_meta': "valid sections",
-        'content': sections.list
+        'content': sections.names()
     })
 
 
 @app.route("/<string:name>") # http://localhost:5000/section
 def get_section(name):
-        if ( name in sections.list ):
+        if ( name in sections.names() ):
                 return jsonify({
                     '_meta': name + "'s" + ' folders content',
                     'name': name,

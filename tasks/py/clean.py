@@ -6,7 +6,8 @@ from .valid_extensions import valid_extensions
 
 def clean(local):
 	items = os.listdir(local)
-	index_paths = list(map(lambda item: local + item, items))
+	index_paths = list(map(lambda item: local + '/' + item, items))
+
 	removed_files = 0
 	removed_folders = 0
 
@@ -31,9 +32,16 @@ def clean(local):
 
 	if(removed_files > 0 and removed_folders == 0):
 		print(str(removed_files) + ' arquivos removidos')
+
 	elif(removed_files > 0 and removed_folders > 0):
 		print(str(removed_files) + ' arquivos removidos.' + str(removed_folders) + ' pastas removidas')
+
 	elif(removed_files == 0 and removed_folders > 0):
 		print(str(removed_folders) + ' pastas removidas')
+
 	elif(removed_files == 0 and removed_folders == 0): 
 		print('Nenhum item removido')
+
+def clean_directories(directories_list):
+	for directory in directories_list:
+		clean('./public/' + directory)

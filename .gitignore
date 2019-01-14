@@ -1,14 +1,15 @@
-# Static files
-blocos/**/*
-infograficos/**/*
-pictogramas/**/*
+# Too simple unit tests to push
+tests.py
 
-!blocos/index.html
-!infograficos/index.html
-!pictogramas/index.html
+# Windows development shortcuts
+u.bat
+t.bat
 
-# Non minidfied assets (for development)
-vue.js
+# json output from python tasks
+public/blocos
+public/pictogramas
+public/infograficos
+public/_data/*.json
 
 # Windows image file caches
 Thumbs.db

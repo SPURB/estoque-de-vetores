@@ -10,7 +10,10 @@ export default new Vuex.Store({
 		error: false,
 		home: undefined,
 		section: undefined,
-		validSections: false
+		validSections: false,
+		imagesHostBaseUrl: process.env.VUE_APP_IMAGES_HOST_BASE_URL
+	},
+	getters: {
 	},
 	mutations: {
 		FECHING: (state, status) => { state.fetching = status },
