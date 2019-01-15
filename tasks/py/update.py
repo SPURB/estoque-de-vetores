@@ -2,10 +2,14 @@
 import os, struct, imghdr, json
 from .folder_name import folder_name
 from .valid_extensions import valid_extensions
+from .hostname import get_host_url
+
+hosturl = get_host_url('./host-public-folders.txt')
 
 encoding='UTF8'
 
 def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#20380514
+
 		'''Determine the image type of fhandle and return its size. from draco'''
 		with open(fname, 'rb') as fhandle:
 				head = fhandle.read(24)
@@ -40,70 +44,74 @@ def get_image_size(fname):#http://stackoverflow.com/questions/8032642/ddg#203805
 				return width, height
 
 def create_base(local):
-	have_full_img = False
+	# have_full_img = False
 	json_list = []
 	items = os.listdir(local)
 	index_paths = list(map(lambda item: local + '/' + item, items))
 	nome_pagina = "'" + local.replace('./public/','')+ "'"
 	nome_pagina = nome_pagina.title()
 
-	for imagem in index_paths:
-		# print(imagem)
-		if os.path.isdir(imagem):
-			path_list = os.listdir(imagem)
-
+	for folder in index_paths:
+		if os.path.isdir(folder):
+			files_paths_list = os.listdir(folder)
+			folder_absolute_path = hosturl + local.replace('./public/', '') + '/' + folder_name(folder)
 			valid_files = []
 
-			for file_item in path_list:
+			for file_item in files_paths_list:
 				file_name, file_extension = os.path.splitext(file_item)
 
 				if file_name.lower().endswith('_th') or file_name.lower().endswith('thumb'):
-					thumb = file_item
-					thumb_height = get_image_size(imagem+'/'+file_item)[0]
-					thumb_width = get_image_size(imagem+'/'+file_item)[1]
+					thumb = folder_absolute_path + '/' + file_item
+					thumb_height = get_image_size(folder + '/'+file_item)[0]
+					thumb_width = get_image_size(folder + '/'+file_item)[1]
 
 				elif file_name.lower().endswith('_fl') or file_name.lower().endswith('_full'):
-					full = file_item
-					full_height = get_image_size(imagem+'/'+file_item)[0]
-					full_width = get_image_size(imagem+'/'+file_item)[1]
-					have_full_img = True
+					full = folder_absolute_path + '/' + file_item
+					full_height = get_image_size(folder + '/'+ file_item)[0]
+					full_width = get_image_size(folder + '/'+ file_item)[1]
+					# have_full_img = True
 
 				for valid in valid_extensions:
 					if file_extension == valid:
-						if file_name.lower().endswith('_th') == False and file_name.lower().endswith('thumb') == False:
-							valid_files.append(file_item)
-						elif have_full_img == False:
-							valid_files.append(file_item)
+						valid_files.append(file_item)
 
-			if have_full_img == False:
-				full = False
-				full_height = False
-				full_width = False
-				
-			json_list.append({
-				"folder": folder_name(imagem),
-				"thumb":{
-					"name": thumb,
-					"height": thumb_height,
-					"width": thumb_width
-				},
-				"full":{
-					"name": full,
-					"height": full_height,
-					"width": full_width
+			try:
+				json_list.append({
+					"folder": folder_absolute_path,
+					"thumb":{
+						"name": thumb,
+						"height": thumb_height,
+						"width": thumb_width
+					}
+					, "full":{
+						"name": full,
+						"height": full_height,
+						"width": full_width
+						},
+					"files": valid_files
+				})
+			except UnboundLocalError:
+				json_list.append({
+					"folder": folder_absolute_path,
+					"thumb":{
+						"name": thumb,
+						"height": thumb_height,
+						"width": thumb_width
 					},
 					"files": valid_files
-			})
-	
+				})
+
 	file_name = nome_pagina.replace("'", '').lower()
 	file_path = './public/_data/' + file_name +'.json'
 	base = open(file_path,'w', encoding=encoding)
-	json_output = json.dumps(json_list, indent = 4 , sort_keys=True , ensure_ascii = False) # identado
-	# json_output = json.dumps(json_list, sort_keys=True , ensure_ascii = False) 
+	# json_output = json.dumps(json_list, indent = 4 , sort_keys=True , ensure_ascii = False) # identado
+	json_output = json.dumps(json_list, sort_keys=True , ensure_ascii = False)
 	base.write(json_output)
 	base.close()
 
 	print(file_name + ' atualizado em ' + file_path)
+	print('+---------------------------------------------------------------------------+')
+
 
 def create_bases(directories_list):
 	for directory in directories_list:
@@ -112,6 +120,7 @@ def create_bases(directories_list):
 def sections(base_folder):
 	valid_dirs = os.listdir(base_folder)
 	valid_dirs.remove('_data')
+	valid_dirs.remove('README.md')
 
 	section_data = []
 
@@ -120,6 +129,10 @@ def sections(base_folder):
 		files = os.listdir(home_images)
 		section_images = list(filter(lambda file: file.lower().endswith(('.png', '.jpg', '.gif')), files))
 
+		if len(section_images) == 0: 
+			print("***IMPORTANTE***: Inclua uma imagem em (preferencialmente ): /public/" + section)
+			print('+---------------------------------------------------------------------------+')
+
 		section_images_obj = []
 
 		for image in section_images:
@@ -127,9 +140,10 @@ def sections(base_folder):
 			path = base_folder + section + '/' + image
 			width = get_image_size(path)[0]
 			height = get_image_size(path)[1]
+			imagePath = hosturl + section + '/' + image
 
 			section_images_obj.append({
-				'filename': image,
+				'filename': imagePath,
 				'width': width,
 				'height': height
 			})
@@ -146,3 +160,4 @@ def sections(base_folder):
 	base.write(json_output)
 	base.close()
 	print('secoes atualizadas em ' + file_path)
+	print('+---------------------------------------------------------------------------+')

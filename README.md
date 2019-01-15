@@ -1,6 +1,10 @@
 # estoque-de-vetores
 Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria de Desenvolvimento Urbano e Licenciamento) e São Paulo Urbanismo (São Paulo Urbanismo).
 
+## Características
+Cria, a partir de qualquer conjunto de diretórios com arquivos de imagens em uma api e aplicação web. 
+Não há banco de dados. Os dados são compilados em arquivos `.json` (por cron job) e disponibilizados pela api. A api foi escrita em [flask](http://flask.pocoo.org/) e a aplicação em [vue](https://vuejs.org/).
+
 ## Setup do ambiente 
 
 ### Pré-requisitos
@@ -12,50 +16,69 @@ Sistema de catalogação de desenhos vetoriais produzidos pela SMUL (Secretaria 
 2. Dentro do diretório `public` incluir diretórios no padrão abaixo:
 
 	```
-	qualquer-nome-de-diretorio/
-	qualquer-nome-de-diretório-1/
-	pictogramas/
-		imagem-para-pictogramas_home.png
-		Um diretório com espaços e acetuação/
-		Outro diretório/
-		Indústria/
-			Indústria.ai
-			Indústria.pdf
-			Indústria_th.png
-			Indústria_full.png
+	public/
+		diretorio-1/
+		diretório-2/
+		diretorio-n/
+			arquivo_home.png
+			subdiretorio-1/
+			subdiretorio-2/
+				arquivo.ai
+				arquivo.pdf
+				arquivo_th.png
+				arquivo_full.png
 	```
-	##### Sempre incluir thumbnail
-	Criar um thumb para gerar a pré-visualização
+	### Alguns cuidados:
+	* Incluir thumbnail em todos os diretórios. No exemplo acima o thumbnail do diretório é  `arquivo_home.png`.
 
-	Para isto crie uma imagem com o nome `thumb` ou terminada em `_th` dentro do diretório. No exemplo acima: `Indústria_th.png`.
+	* Incluir thumbnail no subdiretório. Criar uma imagem com o nome `thumb` ou terminada em `_th` dentro do subdiretório. No exemplo acima: `arquivo_th.png`. Os padrões de tamanho previstos são `150x150px` e `500x500px`.
 
-	> Definir o padrão de thumbnails para `150x150px` ou `500x500px`.
+	* Incluir arquivos `_full` ou `_fl` (opcional). Caso imagens com este padrão não existam o primeiro `png`, `jpg` ou `gif` do diretório gerará esta pré-visualização. No exemplo o arquivo equivalente é o `arquivo_full.png`
 
-	##### Full
-	Arquivos terminados em `_full` ou `_fl` são opcionais.  Caso imagens do tipo não existam o primeiro png, jpg ou gif do diretório gerará esta pré-visualização. No exemplo acima o arquivo é `Indústria_full.png`
+4. Renomeie `host-public-folders-sample.txt` para `host-public-folders.txt` e altere o texto incluindo a url pública da aplicação. (caso seja para desenvolvimento local pode manter `http://127.0.0.1/estoque-de-vetores/public`)
 
-3. Abrir o terminal:
-```
-python update.py
-```
-veja se os arquivos foram corretamente criados em `public/_data`
+5. Abra o terminal:
+	```
+	py update.py # ~ py3 ~ caso tenha as duas versões do python
+	```
+veja se os arquivos `.json` foram corretamente criados em `public/_data`
+
+6. Faça o setup do backend (se já fez pule para etapa 7) seguindo as instruções do `api/README.md`
+
+7. Inicie a API (backend)
+	```
+	cd api
+	py app.py
+	```
+
+8. Faça o setup do app (frontend) (se já fez pule para etapa 9) seguindo as instruções do `app/README.md`
 
 
-4. Pode ser necessário limpar os diretórios para manter apenas os arquivos necessários para a renderização das páginas. `clean.py` irá deletar todos os arquivos diferentes das seguintes extensões utilizadas nos diretórios filhos de `public/`. São válidas as seguintes extensões: 
-`jpg`, `png`, `gif`, `pdf`, `svg`, `eps`, `ai`, `psd`, `skp`, `dwg` e `dxf`. (ver `assets/py/valid_extensions.py`)
+9. Inicie o app
+	```
+	cd app
+	npm run serve
+	```
+10. O app estará rodando em [localhost:8080](http:localhost:8080)
 
-5. 
+## Limpeza de subdiretórios (`/public/diretorios/subdiretorio`)
+Pode ser necessário limpar os subdiretórios para manter apenas os arquivos necessários. Execute `py clean.py` para deletar todos os arquivos das extensões válidas definidas em `assets/py/valid_extensions.py`. São elas: 
+ * `jpg`
+ * `png`
+ * `gif`
+ * `pdf`
+ * `svg`
+ * `eps`
+ * `ai`
+ * `psd`
+ * `skp`
+ * `dwg`
+ * `dxf`
 
 ## Desenvolvimento 
 
 ### Backend
-```
-cd api
-```
 Siga as instruções do `/api/README.md`
 
 ### Frontend
-```
-cd app
-```
 Siga as instruções do `/app/README.md`

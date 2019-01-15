@@ -1,7 +1,7 @@
 import os
 #!/usr/bin/python
 # return clean folder name 
-# imagem './public/blocos/arvore_01' return 'arvore_01'
+# imagem './public/blocos/arvore_01' returns 'arvore_01'
 
 def folder_name(imagem):
 	sections = os.listdir('./public/')

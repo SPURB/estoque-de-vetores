@@ -1,0 +1,1 @@
+O conteúdo deste diretório pode ser alocado em um servidor com url pública separadamente da aplicação. Não esqueça de renomear `../api/host-public-folders-sample.txt` para `../api/host-public-folders.txt` e incluir a url pública deste diretório.

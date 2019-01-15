@@ -8,10 +8,9 @@ export default new Vuex.Store({
 	state: {
 		fetching: false,
 		error: false,
-		home: undefined,
-		section: undefined,
-		validSections: false,
-		imagesHostBaseUrl: process.env.VUE_APP_IMAGES_HOST_BASE_URL
+		home: false,
+		section: false,
+		validSections: []
 	},
 	getters: {
 	},

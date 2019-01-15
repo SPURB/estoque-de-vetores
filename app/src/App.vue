@@ -1,22 +1,15 @@
 <template>
 	<div id="app">
-		<headerCabecalho v-if="!isHome"></headerCabecalho>
 		<router-view/>
 	</div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import headerCabecalho from '@/components/headerCabecalho'
 
 export default {
 	name: 'app',
-	components: { headerCabecalho },
 	computed: {
-		isHome () {
-			if (this.$route.name === 'home') return true
-			else return false
-		},
 		...mapState([
 			'validSections'
 		])
@@ -27,6 +20,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss">
-</style>
