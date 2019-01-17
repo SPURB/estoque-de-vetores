@@ -6,8 +6,8 @@
 				<li v-for="(route, index) in home" :key="index">
 					<router-link :to="route.name">
 						<img v-for="(image, index) in route.images" :key="index"
-							:src="image.filename"
-							:alt="alt(image.name)">
+							:src="route.folder + '/' + image.file"
+							:alt="alt(image.file)">
 						<h2>{{ route.name }}</h2>
 					</router-link>
 				</li>

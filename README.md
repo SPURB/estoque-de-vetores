@@ -20,7 +20,7 @@ Não há banco de dados. Os dados são compilados em arquivos `.json` (por cron 
 		diretorio-1/
 		diretório-2/
 		diretorio-n/
-			arquivo_home.png
+			diretorio-n.png
 			subdiretorio-1/
 			subdiretorio-2/
 				arquivo.ai
@@ -29,7 +29,7 @@ Não há banco de dados. Os dados são compilados em arquivos `.json` (por cron 
 				arquivo_full.png
 	```
 	### Alguns cuidados:
-	* Incluir thumbnail em todos os diretórios. No exemplo acima o thumbnail do diretório é  `arquivo_home.png`.
+	* Incluir thumbnail em todos os diretórios. No exemplo acima o thumbnail do diretório é  `diretorio-n.png`.
 
 	* Incluir thumbnail no subdiretório. Criar uma imagem com o nome `thumb` ou terminada em `_th` dentro do subdiretório. No exemplo acima: `arquivo_th.png`. Os padrões de tamanho previstos são `150x150px` e `500x500px`.
 

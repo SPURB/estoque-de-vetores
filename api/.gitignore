@@ -1,13 +1,9 @@
 # shortcuts for development in windows
-activate.bat
-r.bat
-t.bat
+*.bat
+!run-debbuger.bat
 
 # enviroment
 host.txt
-
-# Windows dev
-activate.bat
 
 # IDE
 .vscode

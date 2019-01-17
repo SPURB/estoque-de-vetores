@@ -2,11 +2,10 @@
 host-public-folders.txt
 
 # Too simple unit tests to push
-# tests.py
+tests.py
 
 # Windows development shortcuts
-u.bat
-t.bat
+*.bat
 
 # json output from python tasks
 public/blocos

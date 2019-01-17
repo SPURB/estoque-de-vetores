@@ -61,12 +61,12 @@ def create_base(local):
 				file_name, file_extension = os.path.splitext(file_item)
 
 				if file_name.lower().endswith('_th') or file_name.lower().endswith('thumb'):
-					thumb = folder_absolute_path + '/' + file_item
+					thumb = file_item
 					thumb_height = get_image_size(folder + '/'+file_item)[0]
 					thumb_width = get_image_size(folder + '/'+file_item)[1]
 
 				elif file_name.lower().endswith('_fl') or file_name.lower().endswith('_full'):
-					full = folder_absolute_path + '/' + file_item
+					full = file_item
 					full_height = get_image_size(folder + '/'+ file_item)[0]
 					full_width = get_image_size(folder + '/'+ file_item)[1]
 					# have_full_img = True
@@ -140,16 +140,16 @@ def sections(base_folder):
 			path = base_folder + section + '/' + image
 			width = get_image_size(path)[0]
 			height = get_image_size(path)[1]
-			imagePath = hosturl + section + '/' + image
 
 			section_images_obj.append({
-				'filename': imagePath,
+				'file': image,
 				'width': width,
 				'height': height
 			})
 
 		section_data.append({
 			'name': section,
+			'folder': hosturl + section,
 			'images': section_images_obj
 		})
 

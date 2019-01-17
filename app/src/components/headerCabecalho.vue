@@ -8,7 +8,7 @@
 		<div class="icones">
 			<router-link
 				v-for="(section, index) in home"
-				:to="section.name"
+				:to="'../' + section.name"
 				:key="index"
 				tag="a"> {{ section.name }}</router-link>
 		</div>

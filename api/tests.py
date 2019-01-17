@@ -12,3 +12,6 @@ return a json section content
 '''
 # from modules import readdata
 # print(readdata.read('blocos'))
+
+# import sys
+# print(sys.path)
