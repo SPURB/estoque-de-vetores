@@ -1,5 +1,4 @@
 #!/usr/bin/python
-from flask import request
 from .sections import names
 
 '''
